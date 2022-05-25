@@ -1,5 +1,6 @@
 from flask import Flask, jsonify
 from itsdangerous import json
+import os
 
 app = Flask(__name__)
 
@@ -32,4 +33,4 @@ def return_json():
     return jsonify(response)
     
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
