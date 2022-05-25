@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, jsonify
+from itsdangerous import json
 
 app = Flask(__name__)
 
@@ -25,6 +26,10 @@ def greet():
 def hello_world():
     html = generate_html(greet())
     return html
-
+@app.route('/json')
+def return_json():
+    response = {"one":1,"two":2}
+    return jsonify(response)
+    
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
