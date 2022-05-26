@@ -19,6 +19,8 @@ jobs:
       - store_artifacts:
           path: test-reports
   deploy:
+    docker:
+      - image: circleci/python:3.7.4
     steps:
       - checkout
       - run:
