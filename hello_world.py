@@ -1,8 +1,12 @@
+import imp
 from flask import Flask, jsonify
 from itsdangerous import json
+from flask_cors import CORS, cross_origin
 import os
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 def generate_html(message):
     html = """
@@ -26,7 +30,9 @@ def greet():
 def hello_world():
     html = generate_html(greet())
     return html
-@app.route('/json')
+
+@app.route('/api/onetwo')
+@cross_origin("*")
 def return_json():
     response = {"one":1,"two":2}
     return jsonify(response)
