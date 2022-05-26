@@ -31,4 +31,5 @@ workflows:
   build_test:
     jobs:
       - run_tests
+      - deploy
       
