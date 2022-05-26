@@ -32,4 +32,6 @@ workflows:
     jobs:
       - run_tests
       - deploy
+        requires:
+          - run_tests
       
