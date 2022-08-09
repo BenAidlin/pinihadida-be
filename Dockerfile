@@ -1,5 +1,8 @@
-FROM python:3
+FROM ubuntu
 COPY . /app 
 WORKDIR /app
+RUN apt-get update -y
+RUN apt-get install -y python3
+RUN apt-get install -y python3-pip
 RUN pip install --no-cache-dir -r requirements.txt
-CMD python hello_world.py
+CMD python3 hello_world.py
